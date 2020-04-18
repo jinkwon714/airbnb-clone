@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.contrib.auth.models import UserAdmin
+from django.contrib.auth.admin import UserAdmin
 from . import models
 
 
@@ -8,17 +8,19 @@ class CustomUserAdmin(UserAdmin):
 
     """ Custom User Admin """
 
-    fielsets = UserAdmin.fielsets + (
-        "Custom Profile",
-        {
-            "fields": (
-                "avatar",
-                "gender",
-                "bio",
-                "birthday",
-                "language",
-                "currency",
-                "superhost",
-            )
-        },
+    fieldsets = UserAdmin.fieldsets + (
+        (
+            "Custom Profile",
+            {
+                "fields": (
+                    "avatar",
+                    "gender",
+                    "bio",
+                    "birthdate",
+                    "language",
+                    "currency",
+                    "superhost",
+                )
+            },
+        ),
     )
